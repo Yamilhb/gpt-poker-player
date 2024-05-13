@@ -1,0 +1,7 @@
+GENERAL
+1º Install openai library.
+2º Pay an api plan.
+3º Generate an apikey.
+IMAGE INPUTS 
+4º Use header in the API request (for security).
+4º 
