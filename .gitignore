@@ -4,3 +4,6 @@ __pycache__/
 # Environments
 entorno/
 
+# Data
+api/historical/*.csv
+api/historical/rawdata/*.txt
