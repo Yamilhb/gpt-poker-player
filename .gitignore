@@ -7,3 +7,7 @@ entorno/
 # Data
 api/historical/*.csv
 api/historical/rawdata/*.txt
+api/historical/tabdata/*.parquet
+
+# Auxiliar codes
+api/process/aux_analytics.ipynb

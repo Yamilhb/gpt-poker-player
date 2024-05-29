@@ -1,2 +1,6 @@
 openai
 matplotlib
+pandas
+polars
+aiofiles
+joblib

@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+# Set the module paths
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+print(sys.path)
+
 from openai import OpenAI
 
 import matplotlib
@@ -8,9 +14,10 @@ import time
 import base64
 import os
 # import requests
+from api.configuration.config import IMG_DIR
 
 # Path to the image
-image_path = "./images/"
+image_path = f"{IMG_DIR}/"
 user_poker_name="pokeados"
 
 api_key = os.getenv('POKER_GPT_KEY')
@@ -35,7 +42,7 @@ for im in os.listdir(image_path):
         base64_image = encode_image(f"{image_path}{im}")
 
         response = client.chat.completions.create(
-            model="gpt-4-turbo",
+            model="gpt-4o",
             messages=[{"role": "user",
                     "content": [
                         {
