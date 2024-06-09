@@ -41,11 +41,12 @@ def process_hand(hand_text):
     
     for line in lines[2:]:
         if line.startswith('Seat '):
-            player = re.search(r'Seat (\d+): (\w+) \(\$(\d+(?:\.\d+)?) in chips\)', line)
+            player = re.search(r'Seat (\d+): (.+) \(\$(\d+(?:\.\d+)?) in chips\)', line)
             if player:
                 seat_number = player.group(1)
                 players[player.group(2)] = {
                     'seat': get_position(seat_number, button_seat),
+                    'chips_inicial': float(player.group(3)),
                     'chips': float(player.group(3)),
                     'seat_number': seat_number
                 }
@@ -69,8 +70,8 @@ def process_hand(hand_text):
             current_stage = 'summary'
             sequential_number = 1
         else:
-            action = re.search(r'(\w+): (.+)', line)
-            action2 = re.search(r'(\w+) collected \$(\d+(?:\.\d+)?) (.+)', line)
+            action = re.search(r'(.+): (.+)', line)
+            action2 = re.search(r'(.+) collected \$(\d+(?:\.\d+)?) (.+)', line)
             if action:
                 player = action.group(1)
                 action_text = action.group(2)
@@ -91,6 +92,7 @@ def process_hand(hand_text):
                     'button_seat': button_seat,
                     'seat': players[player]['seat'] if player in players else None,
                     'player': player,
+                    'chips_inicial': players[player]['chips_inicial'] if player in players else None,
                     'chips': players[player]['chips'] if player in players else None,
                     'stage': current_stage,
                     'pot': current_pot,
@@ -114,6 +116,7 @@ def process_hand(hand_text):
                     'button_seat': button_seat,
                     'seat': players[player]['seat'] if player in players else None,
                     'player': player if player in players else None,
+                    'chips_inicial': players[player]['chips_inicial'] if player in players else None,
                     'chips': players[player]['chips'] if player in players else None,
                     'stage': current_stage,
                     'pot': current_pot,
@@ -167,6 +170,7 @@ def dataframe(contents):
         "button_seat": pl.Utf8,
         "seat": pl.Utf8,
         "player": pl.Utf8,
+        "chips_inicial": pl.Float64,
         "chips": pl.Float64,
         "stage": pl.Utf8,
         "pot": pl.Float64,
