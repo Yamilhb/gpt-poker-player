@@ -4,3 +4,7 @@ pandas
 polars
 aiofiles
 joblib
+protobuf==3.19.6
+langchain==0.2.3
+langchain_community==0.2.4
+langchain-openai==0.1.8

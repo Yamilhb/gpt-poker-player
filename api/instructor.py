@@ -59,7 +59,7 @@ for im in os.listdir(image_path):
         )
         
         # Instructors answer
-        print(f"RESPUESTA: {response.choices[0].message.content}")
+        print(f"RESPUESTA:\n {response.choices[0].message.content}")
         # Show the image
         imag = mpimg.imread(f"{image_path}{im}")
         plt.imshow(imag)

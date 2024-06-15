@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+api/process/.ipynb_checkpoints/
 
 # Environments
 entorno/
@@ -11,3 +12,6 @@ api/historical/tabdata/*.parquet
 
 # Auxiliar codes
 api/process/aux_analytics.ipynb
+
+# Security
+api/configuration/keys.py
