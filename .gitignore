@@ -5,6 +5,9 @@ api/process/.ipynb_checkpoints/
 # Environments
 entorno/
 
+# Models
+api/process/*.pt
+
 # Data
 api/historical/*.csv
 api/historical/rawdata/*.txt
